@@ -6,8 +6,6 @@ use App\Models\Experience;
 use App\Models\Project;
 use App\Models\Skill;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class WelcomeController extends Controller
