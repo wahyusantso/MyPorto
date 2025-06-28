@@ -15,7 +15,7 @@ class WelcomeController extends Controller
     public function index()
     {
         $skills = Skill::all();
-        $experiences = Experience::all();
+        $experiences = Experience::latest('updated_at')->get();
         $projects = Project::latest('updated_at')->get();
         foreach ($projects as $project) {
             $project['tech_stack'] = explode(', ', $project->tech_stack ?? ''); //adjust tech stack agar menjadi array
