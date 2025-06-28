@@ -1,0 +1,250 @@
+* {
+    scroll-behavior: smooth;
+}
+
+.brand-carousel-wrapper {
+    position: relative;
+    overflow: hidden;
+    margin-top: 30px;
+}
+
+.scroll-container {
+  overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+.scroll-container::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+.scroll-container:hover .brand-carousel {
+  animation-play-state: paused;
+}
+
+.brand-carousel {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    animation: scroll-left 20s linear infinite;
+    width: max-content;
+}
+
+.brand-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.brand-logo {
+    height: 60px;
+    opacity: 0.7;
+    transition: 0.3s;
+    margin: 0;
+    padding: 0;
+}
+
+.brand-title {
+    margin: 0;
+    padding: 0;
+    font-size: 1.5rem;
+    font-weight: 100;
+    color: gray;
+}
+
+.brand-logo:hover {
+    filter: grayscale(100%);
+    opacity: 1;
+}
+
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.skills-label {
+    font-weight: 400;
+}
+
+.project-tech {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: grey;
+    margin: 0;
+}
+
+.timeline__desc :is(.desc, li) {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.timeline__desc .tech {
+    margin-top: 20px;
+    font-size: 1.8rem;
+}
+
+.timeline__desc :is(.show-more, .show-less) { /*menerapkan dikedua class dari parent timeline__desc */
+    font-size: 1.5rem;
+    color: white;
+    cursor: pointer;
+}
+
+.text-occupation {
+    color: hsla(36, 72%, 70%, 1);
+}
+
+
+.navbar {
+    position: fixed;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(42, 42, 42, 0.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    padding: 2rem 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 900px;
+    width: auto;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.navbar:hover {
+    background: rgba(42, 42, 42, 0.9);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 6rem;
+    /* align-items: center; */
+    margin: 0;
+    width: 100%;
+}
+
+.nav-links a.active {
+    color: hsla(36, 72%, 70%, 1);
+    font-weight: 500;
+}
+
+.nav-links li {
+    position: relative;
+}
+
+.nav-links a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-weight: 600;
+    /* font-size: 0.85rem; */
+    font-size: 1.5rem;
+    letter-spacing: 0.5px;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    text-transform: capitalize;
+}
+
+.nav-links a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.profile-picture {
+    width: 500px;
+    height: 600px;
+    border-radius: 20px;
+    object-fit: fill;
+}
+
+@media screen and (max-width: 500px) {
+    .navbar {
+        max-width: max-content;
+        width: 100% ;
+        padding: 1rem 2rem;
+    }
+
+    .nav-links {
+        gap: 1rem;
+    }
+
+    .nav-links a.active {
+        font-weight: 200;
+    }
+
+    .nav-links a {
+        font-size: 0.8rem;
+    }
+
+    .brand-logo {
+        height: 30px;
+    }
+
+    .brand-title {
+        font-size: 0.8rem;
+    }
+
+    .modal-popup {
+        width: 80vw;
+    }
+
+    .profile-picture {
+        width: 420px;
+        height: 400px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 900px) {
+    .navbar {
+        max-width: max-content;
+        width: 100% ;
+        padding: 2rem 3rem;
+    }
+
+    .nav-links {
+        gap: 3rem;
+    }
+
+    .nav-links a.active {
+        font-weight: 300;
+    }
+
+    .nav-links a {
+        font-size: 1.5rem;
+    }
+
+    .modal-popup {
+        width: 80vw;
+    }
+
+    .profile-picture {
+        width: 420px;
+        height: 400px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .flex-about {
+        display: flex;
+        justify-content: center;
+    }
+}
