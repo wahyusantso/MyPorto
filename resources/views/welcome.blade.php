@@ -77,7 +77,7 @@
                         <h1 class="text-huge-title">
                             I am Wahyu, <br> 
                             a junior
-                            <span class="text-occupation">IT Programmer</span>
+                            <span class="text-occupation">Programmer</span>
                         </h1>
                     </div>
 
@@ -117,7 +117,7 @@
                                 About
                             </h2>
                             <p class="attention-getter" data-animate-el>
-                                Junior IT Programmer with 1 year and 6 months of hands-on experience in the field. 
+                                Junior Programmer with 1 year and 6 months of hands-on experience in the field. 
                                 Proficient in web development using the Laravel framework. 
                                 Experienced in backend development with Node.js for building API.
                                 Highly committed to continuous learning and staying current with the latest trends in software development.
