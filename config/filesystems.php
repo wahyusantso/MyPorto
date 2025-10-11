@@ -47,15 +47,6 @@ return [
             'report' => false,
         ],
 
-        'hosting' => [
-            'driver' => 'local',
-            'root' => '/home/u844121767/domains/wahyusantoso.id/public_html/storage',
-            'url' => env('APP_URL') . '/storage',
-            'visibility' => 'public',
-            'throw' => false,
-            'report' => false,
-        ],
-
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),
