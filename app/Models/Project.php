@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Project extends Model
 {
@@ -15,6 +16,15 @@ class Project extends Model
         'image_path',
         'video_path',
         'project_path',
-        'tech_stack',
     ];
+
+    public function features(): HasMany
+    {
+        return $this->hasMany(Features::class);
+    }
+
+    public function techs(): HasMany
+    {
+        return $this->hasMany(TechStack::class);
+    }
 }
