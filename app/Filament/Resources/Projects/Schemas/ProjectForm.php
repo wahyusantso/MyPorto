@@ -33,7 +33,6 @@ class ProjectForm
                                 FileUpload::make('image_path')->label('Project Thumbnail')
                                     ->required()
                                     ->disk('direct_public')
-                                    ->visibility('public')
                                     ->directory('Projects')
                                     ->columnSpanFull(),
                                 Textarea::make('video_path')->label('Youtube Url')

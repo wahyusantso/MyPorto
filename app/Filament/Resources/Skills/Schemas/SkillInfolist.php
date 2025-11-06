@@ -12,11 +12,8 @@ class SkillInfolist
         return $schema
             ->components([
                 TextEntry::make('skill_name'),
-                TextEntry::make('path'),
-                TextEntry::make('created_at')
-                    ->dateTime(),
-                TextEntry::make('updated_at')
-                    ->dateTime(),
+                TextEntry::make('path')
+                    ->label('Icon Location'),
             ]);
     }
 }

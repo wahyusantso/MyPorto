@@ -18,6 +18,7 @@ class SkillsTable
                 TextColumn::make('skill_name')
                     ->searchable(),
                 TextColumn::make('path')
+                    ->label('Icon Location')
                     ->searchable(),
                 TextColumn::make('created_at')
                     ->dateTime()

@@ -2,8 +2,11 @@
 
 namespace App\Filament\Resources\Skills\Schemas;
 
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 
 class SkillForm
@@ -12,11 +15,18 @@ class SkillForm
     {
         return $schema
             ->components([
-                TextInput::make('skill_name')
-                    ->required(),
-                Textarea::make('path')
-                    ->required()
-                    ->columnSpanFull(),
+                Section::make()
+                    ->schema([
+                        TextInput::make('skill_name')
+                            ->required(),
+                        FileUpload::make('path')
+                            ->label('Icon')
+                            ->disk('direct_public')
+                            ->directory('icons')
+                            ->required(),
+                    ])
+                    ->columns(2)
+                    ->columnSpanFull()
             ]);
     }
 }
