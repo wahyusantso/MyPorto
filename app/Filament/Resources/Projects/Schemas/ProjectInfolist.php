@@ -14,11 +14,12 @@ class ProjectInfolist
                 TextEntry::make('project_name'),
                 TextEntry::make('category'),
                 TextEntry::make('description'),
-                TextEntry::make('tech_stack'),
-                TextEntry::make('created_at')
-                    ->dateTime(),
-                TextEntry::make('updated_at')
-                    ->dateTime(),
+                TextEntry::make('features.title') //call relation function
+                    ->label('Features')
+                    ->bulleted(),
+                TextEntry::make('techs.title')
+                    ->label('Tech Stack')
+                    ->bulleted()
             ]);
     }
 }

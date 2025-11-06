@@ -21,8 +21,6 @@ class ProjectsTable
                     ->searchable(),
                 TextColumn::make('description')
                     ->searchable(),
-                TextColumn::make('tech_stack')
-                    ->searchable(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

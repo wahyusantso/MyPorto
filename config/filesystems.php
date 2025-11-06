@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => env('FILESYSTEM_DISK', 'local'),
+    'default' => env('FILESYSTEM_DISK', 'public'),
 
     /*
     |--------------------------------------------------------------------------
@@ -59,6 +59,15 @@ return [
             'throw' => false,
             'report' => false,
         ],
+
+        'direct_public' => [ //custom disk, ketika tidak bisa menjalankan storage link di hosting
+            'driver' => 'local',
+            'root' => public_path('files'),
+            'url' => env('APP_URL') . '/files',
+            'visibility' => 'public',
+            'throw' => false,
+            'report' => false
+        ]
 
     ],
 
