@@ -21,7 +21,7 @@
 
     <!-- font awesome
     ================================================== -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
     <!-- JQuery
     ================================================== -->
@@ -291,14 +291,61 @@
                                     frameborder="0" allowfullscreen></iframe>
 
                                 <div class="modal-popup__desc">
-                                    <h5 id="projectName">{{ $item->project_name }}</h5>
-                                    <p id="projectDescription">{{ $item->description }}</p>
-                                    <p class="project-tech">Tech Stack:</p>
+                                    <div class="project-flex-title">
+                                        <h5 class="project-title" id="projectName">{{ $item->project_name }}</h5>
+                                        <a href="#" class="project-live-demo" target="_blank"
+                                            rel="noopener noreferrer">Live Demo</a>
+                                    </div>
+                                    {{-- <p id="projectDescription">{{ $item->description }}</p> --}}
+                                    <div class="box" id="container-description">
+                                        <p class="project-title">
+                                            <i class="fa-solid fa-circle-info fa-icon-margin"></i>
+                                            Description
+                                        </p>
+                                        <div class="hidden-display" id="project-description">
+                                            <p>
+                                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                                tempor incididunt ut labore et dolore magna aliqua.
+                                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                                                ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                                                reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+                                                qui officia deserunt mollit anim id est laborum."
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="box" id="container-feature">
+                                        <p class="project-title">
+                                            <i class="fa-solid fa-circle-check fa-icon-margin"></i>
+                                            Features
+                                        </p>
+                                        <div class="hidden-display" id="project-feature">
+                                            <ul>
+                                                <li class="project-sub-title">Login & Manajemen Pengguna</li>
+                                                <li class="project-sub-title">CRUD Data Produk</li>
+                                                <li class="project-sub-title">REST API untuk aplikasi mobile</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="box" id="container-tech-stack">
+                                        <p class="project-title">
+                                            <i class="fa-solid fa-microchip fa-icon-margin"></i>
+                                            Tech Stack
+                                        </p>
+                                        <div class="hidden-display" id="project-tech-stack">
+                                            <ul>
+                                                <li class="project-sub-title">Laravel</li>
+                                                <li class="project-sub-title">PHP</li>
+                                                <li class="project-sub-title">Node.JS</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    {{-- <p class="project-title">Tech Stack:</p>
                                     <ul class="modal-popup__cat">
                                         @foreach ($item->tech_stack as $stack)
                                             <li>{{ $stack }}</li>
                                         @endforeach
-                                    </ul>
+                                    </ul> --}}
                                 </div>
 
                             </div>

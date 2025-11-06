@@ -24,6 +24,19 @@ function sliceText() {
     });
 }
 
+$(document).on('click', '#container-description', function () {
+    $('#project-description').slideToggle(200);
+});
+
+$(document).on('click', '#container-feature', function () {
+    $('#project-feature').slideToggle(200);
+});
+
+$(document).on('click', '#container-tech-stack', function () {
+    $('#project-tech-stack').slideToggle(200);
+});
+
+//function to display text show less and show more
 $(document).on('click', '.toggle-action', function () {
     const container = $(this).closest('.container_desc');
     const truncatedContent = container.find('.desc'); //find, method jQuery untuk mencari elemen children
