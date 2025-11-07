@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Experiences\Tables;
 
 use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
@@ -19,9 +20,9 @@ class ExperiencesTable
                     ->searchable(),
                 TextColumn::make('occupation')
                     ->searchable(),
-                TextColumn::make('date_range')
+                TextColumn::make('start_date')
                     ->searchable(),
-                TextColumn::make('tech_stack')
+                TextColumn::make('end_date')
                     ->searchable(),
                 TextColumn::make('created_at')
                     ->dateTime()
@@ -38,6 +39,7 @@ class ExperiencesTable
             ->recordActions([
                 ViewAction::make(),
                 EditAction::make(),
+                DeleteAction::make()
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

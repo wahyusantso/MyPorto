@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Experience extends Model
 {
@@ -11,8 +12,19 @@ class Experience extends Model
     protected $fillable = [
         'company_name',
         'occupation',
-        'date_range',
+        'start_date',
+        'end_date',
         'description',
-        'tech_stack',
     ];
+
+    //casting field dari string ke carbon
+    protected $casts = [
+        'start_date' => 'date',
+        'end_date' => 'date',
+    ];
+
+    public function experiences(): HasMany
+    {
+        return $this->hasMany(TechExperience::class);
+    }
 }

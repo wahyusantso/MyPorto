@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Experiences\Schemas;
 
 use Filament\Infolists\Components\TextEntry;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 
 class ExperienceInfolist
@@ -11,14 +12,18 @@ class ExperienceInfolist
     {
         return $schema
             ->components([
-                TextEntry::make('company_name'),
-                TextEntry::make('occupation'),
-                TextEntry::make('date_range'),
-                TextEntry::make('tech_stack'),
-                TextEntry::make('created_at')
-                    ->dateTime(),
-                TextEntry::make('updated_at')
-                    ->dateTime(),
+                Section::make()
+                    ->schema([
+                        TextEntry::make('company_name'),
+                        TextEntry::make('occupation'),
+                        TextEntry::make('start_date')->date(),
+                        TextEntry::make('end_date')->date(),
+                        TextEntry::make('description')->columnSpanFull(),
+                        TextEntry::make('experiences.title')
+                            ->label('Tech Stack')
+                            ->bulleted(),
+                    ])
+                    ->columns(2)
             ]);
     }
 }

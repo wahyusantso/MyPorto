@@ -2,8 +2,11 @@
 
 namespace App\Filament\Resources\Experiences\Schemas;
 
+use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 
 class ExperienceForm
@@ -12,17 +15,27 @@ class ExperienceForm
     {
         return $schema
             ->components([
-                TextInput::make('company_name')
-                    ->required(),
-                TextInput::make('occupation')
-                    ->required(),
-                TextInput::make('date_range')
-                    ->required(),
-                Textarea::make('description')
-                    ->required()
-                    ->columnSpanFull(),
-                TextInput::make('tech_stack')
-                    ->required(),
+                Section::make()
+                    ->schema([
+                        TextInput::make('company_name')
+                            ->required(),
+                        TextInput::make('occupation')
+                            ->required(),
+                        DatePicker::make('start_date')
+                            ->format('d/m/Y'),
+                        DatePicker::make('end_date')
+                            ->format('d/m/Y'),
+                        Textarea::make('description')
+                            ->required()
+                            ->columnSpanFull(),
+                    ])
+                    ->columns(2),
+                Repeater::make('experiences')
+                    ->relationship('experiences')
+                    ->schema([
+                        TextInput::make('title')
+                            ->required()
+                    ])
             ]);
     }
 }

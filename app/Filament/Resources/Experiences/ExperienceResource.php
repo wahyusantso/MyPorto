@@ -21,7 +21,7 @@ class ExperienceResource extends Resource
 {
     protected static ?string $model = Experience::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::CheckBadge;
 
     protected static string | UnitEnum | null $navigationGroup = 'Portofolio Management';
 
