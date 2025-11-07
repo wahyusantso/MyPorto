@@ -35,10 +35,10 @@ class ProjectForm
                                     ->disk('direct_public')
                                     ->directory('Projects')
                                     ->columnSpanFull(),
-                                Textarea::make('video_path')->label('Youtube Url')
+                                Textarea::make('video_path')->label('Youtube (must embed Link)')
                                     ->required(),
                                 Textarea::make('project_path')
-                                    ->label('Url Live Demo'),
+                                    ->label('Live Demo Link'),
                             ]),
                         Tab::make('Features')
                             ->icon(Heroicon::CheckBadge)

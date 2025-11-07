@@ -21,6 +21,7 @@ class ProjectsTable
                 TextColumn::make('category')
                     ->searchable(),
                 TextColumn::make('description')
+                    ->limit(80, end: '...')
                     ->searchable(),
                 TextColumn::make('created_at')
                     ->dateTime()

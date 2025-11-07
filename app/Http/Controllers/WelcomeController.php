@@ -13,11 +13,13 @@ class WelcomeController extends Controller
     public function index()
     {
         $skills = Skill::all();
-        $experiences = Experience::latest('updated_at')->get();
-        $projects = Project::latest('updated_at')->get();
-        foreach ($projects as $project) {
-            $project['tech_stack'] = explode(', ', $project->tech_stack ?? ''); //adjust tech stack agar menjadi array
-        }
+        $experiences = Experience::with('experiences')
+            ->latest('created_at')
+            ->get();
+
+        $projects = Project::with(['features', 'techs'])
+            ->latest('created_at')
+            ->get();
 
         return view('welcome', [
             'skills' => $skills,
@@ -35,7 +37,6 @@ class WelcomeController extends Controller
                 'message' => 'Data Found',
                 'projects' => $projects
             ], 200);
-
         } catch (ModelNotFoundException $e) {
             return response()->json([
                 'status' => 'failed',

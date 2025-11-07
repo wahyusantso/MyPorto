@@ -150,8 +150,8 @@
                                     @for ($i = 0; $i < 2; $i++)
                                         @foreach ($skills as $item)
                                             <div class="brand-container">
-                                                <img src="{{ asset($item->path) }}" alt="{{ $item->skill_name }}"
-                                                    class="brand-logo">
+                                                <img src="{{ asset('files/' . $item->path) }}"
+                                                    alt="{{ $item->skill_name }}" class="brand-logo">
                                                 <h2 class="brand-title">{{ $item->skill_name }}</h2>
                                             </div>
                                         @endforeach
@@ -180,13 +180,20 @@
                                     <div class="timeline__header">
                                         <h4 class="timeline__title">{{ $item->company_name }}</h3>
                                             <h5 class="timeline__meta">{{ $item->occupation }}</h5>
-                                            <p class="timeline__timeframe">{{ $item->date_range }}</p>
+                                            <p class="timeline__timeframe">
+                                                {{ $item->start_date->format('d/m/Y') . ' - ' . $item->end_date->format('d/m/Y') }}
+                                            </p>
                                     </div>
                                     <div class="container_desc timeline__desc">
                                         <p class="desc">{{ $item->description }}</p>
                                         <p class="desc full-content" hidden></p>
                                         <p class="toggle-action" style="width: max-content"></p>
-                                        <p class="tech"><b>Tech Stack: </b>{{ $item->tech_stack }}</p>
+                                        <ul class="flex-tech-experinces">
+                                            <p class="tech"><b>Tech Stack:</b></p>
+                                            @foreach ($item->experiences as $tech)
+                                                <li>{{ $tech->title . ', ' }}</li>
+                                            @endforeach
+                                        </ul>
                                     </div>
                                 </div>
                             @endforeach
@@ -254,7 +261,7 @@
                                     data-project-id="{{ $item->id }}">
                                     <a class="folio-list__item-link" href="#modal-{{ $item->id }}">
                                         <div class="folio-list__item-pic">
-                                            <img src="{{ asset($item->image_path) }}" alt="">
+                                            <img src="{{ asset('files/' . $item->image_path) }}" alt="">
                                         </div>
 
                                         <div class="folio-list__item-text">
@@ -266,14 +273,18 @@
                                             </div>
                                         </div>
                                     </a>
-                                    <a class="folio-list__proj-link" href="#" title="project link">
-                                        <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z"
-                                                fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
-                                        </svg>
-                                    </a>
+                                    @if ($item->project_path)
+                                        <a class="folio-list__proj-link" href="{{ $item->project_path }}"
+                                            title="project link" target="_blank" rel="noopener noreferrer">
+                                            <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z"
+                                                    fill="currentColor" fill-rule="evenodd" clip-rule="evenodd">
+                                                </path>
+                                            </svg>
+                                        </a>
+                                    @endif
                                 </li> <!--end folio-list__item -->
                             @endforeach
 
@@ -293,25 +304,18 @@
                                 <div class="modal-popup__desc">
                                     <div class="project-flex-title">
                                         <h5 class="project-title" id="projectName">{{ $item->project_name }}</h5>
-                                        <a href="#" class="project-live-demo" target="_blank"
-                                            rel="noopener noreferrer">Live Demo</a>
+                                        @if ($item->project_path)
+                                            <a href="{{ $item->project_path }}" class="project-live-demo"
+                                                target="_blank" rel="noopener noreferrer">Live Demo</a>
+                                        @endif
                                     </div>
-                                    {{-- <p id="projectDescription">{{ $item->description }}</p> --}}
                                     <div class="box" id="container-description">
                                         <p class="project-title">
                                             <i class="fa-solid fa-circle-info fa-icon-margin"></i>
                                             Description
                                         </p>
                                         <div class="hidden-display" id="project-description">
-                                            <p>
-                                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                                tempor incididunt ut labore et dolore magna aliqua.
-                                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-                                                ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                                                reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                                                qui officia deserunt mollit anim id est laborum."
-                                            </p>
+                                            <p class="project-sub-title">{{ $item->description }}</p>
                                         </div>
                                     </div>
                                     <div class="box" id="container-feature">
@@ -321,31 +325,25 @@
                                         </p>
                                         <div class="hidden-display" id="project-feature">
                                             <ul>
-                                                <li class="project-sub-title">Login & Manajemen Pengguna</li>
-                                                <li class="project-sub-title">CRUD Data Produk</li>
-                                                <li class="project-sub-title">REST API untuk aplikasi mobile</li>
+                                                @foreach ($item->features as $feature)
+                                                    <li class="project-sub-title">{{ $feature->title }}</li>
+                                                @endforeach
                                             </ul>
                                         </div>
                                     </div>
                                     <div class="box" id="container-tech-stack">
                                         <p class="project-title">
-                                            <i class="fa-solid fa-microchip fa-icon-margin"></i>
+                                            <i class="fa-solid fa-layer-group fa-icon-margin"></i>
                                             Tech Stack
                                         </p>
                                         <div class="hidden-display" id="project-tech-stack">
                                             <ul>
-                                                <li class="project-sub-title">Laravel</li>
-                                                <li class="project-sub-title">PHP</li>
-                                                <li class="project-sub-title">Node.JS</li>
+                                                @foreach ($item->techs as $tech)
+                                                    <li class="project-sub-title">{{ $tech->title }}</li>
+                                                @endforeach
                                             </ul>
                                         </div>
                                     </div>
-                                    {{-- <p class="project-title">Tech Stack:</p>
-                                    <ul class="modal-popup__cat">
-                                        @foreach ($item->tech_stack as $stack)
-                                            <li>{{ $stack }}</li>
-                                        @endforeach
-                                    </ul> --}}
                                 </div>
 
                             </div>

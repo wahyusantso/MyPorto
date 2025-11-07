@@ -89,14 +89,15 @@
 }
 
 .timeline__desc .tech {
-    margin-top: 20px;
-    font-size: 1.8rem;
+    margin: 0;
+    font-size: 1.8rem;;
 }
 
 .timeline__desc :is(.show-more, .show-less) { /*menerapkan dikedua class dari parent timeline__desc */
     font-size: 1.5rem;
     color: white;
     cursor: pointer;
+    margin-bottom: 1rem;
 }
 
 .text-occupation {
@@ -223,6 +224,14 @@
 .project-live-demo:hover {
     opacity: 0.9;
     color: hsla(36, 72%, 70%, 1);
+}
+.flex-tech-experinces {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1 1 auto;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none;
 }
 
 @media screen and (max-width: 500px) {
