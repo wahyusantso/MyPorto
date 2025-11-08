@@ -210,25 +210,28 @@
 
                         <div class="timeline" data-animate-el>
 
-                            <div class="timeline__block">
-                                <div class="timeline__bullet"></div>
-                                <div class="timeline__header">
-                                    <h4 class="timeline__title">Universitas Pamulang</h3>
-                                        <h5 class="timeline__meta">Bachelor Degree in Informatics Engineering</h5>
-                                        <p class="timeline__timeframe">Mar 2019 - Jul 2023, GPA: 3.58/4.00</p>
+                            @foreach ($educations as $item)
+                                <div class="timeline__block">
+                                    <div class="timeline__bullet"></div>
+                                    <div class="timeline__header">
+                                        <h4 class="timeline__title">{{ $item->college_name }}</h3>
+                                            <h5 class="timeline__meta">{{ $item->major }}</h5>
+                                            <p class="timeline__timeframe">
+                                                {{ $item->start_date->format('M j, Y') . '   -   ' . $item->end_date->format('M j, Y') . ', GPA: ' . $item->grade_point_average }}
+                                            </p>
+                                    </div>
+                                    <div class="timeline__desc">
+                                        <ul>
+                                            @foreach ($item->educations as $activity)
+                                                <li>
+                                                    <b>{{ $activity->title . ': ' }}</b>{{ $activity->description }}
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
                                 </div>
-                                <div class="timeline__desc">
-                                    <ul>
-                                        <li><b>Activities and society:</b> Engaging in community service by providing
-                                            materials on the improvement and skills of information technology for small
-                                            and medium-sized businesses in the Puri Pamulang residential.</li>
-                                        <li><b>Thesis Project:</b> Implementation of an Android Kotlin-Based Food Sales
-                                            System Using the Prototype Method.</li>
-                                        <li><b>Relevant courses:</b> Informatics Logic, Programming Algorithms I-II, Web
-                                            Programming I-II, Mobile Programming.</li>
-                                    </ul>
-                                </div>
-                            </div>
+                            @endforeach
+
 
                         </div> <!-- end timeline -->
 

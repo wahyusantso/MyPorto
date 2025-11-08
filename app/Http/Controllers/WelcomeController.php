@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Education;
 use App\Models\Experience;
 use App\Models\Project;
 use App\Models\Skill;
@@ -21,10 +22,15 @@ class WelcomeController extends Controller
             ->latest('created_at')
             ->get();
 
+        $educations = Education::with('educations')
+            ->latest('created_at')
+            ->get();
+
         return view('welcome', [
             'skills' => $skills,
             'experiences' => $experiences,
-            'projects' => $projects
+            'projects' => $projects,
+            'educations' => $educations
         ]);
     }
 
