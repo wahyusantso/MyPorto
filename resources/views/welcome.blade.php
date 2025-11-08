@@ -111,8 +111,6 @@
                 <div class="row about-info wide flex-about" data-animate-block>
 
                     <div class="column lg-4 md-12 about-info__pic-block">
-                        {{-- <img src="images/about-photo.jpg" 
-                             srcset="images/about-photo.jpg 1x, images/about-photo@2x.jpg 2x" alt="" class="about-info__pic" data-animate-el> --}}
 
                         <img src="{{ asset('images/ai1.png') }}" alt="" class="about-info__pic profile-picture"
                             data-animate-el>
