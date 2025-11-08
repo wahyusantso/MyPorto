@@ -22,9 +22,9 @@ class ExperienceForm
                         TextInput::make('occupation')
                             ->required(),
                         DatePicker::make('start_date')
-                            ->format('d/m/Y'),
+                            ->displayFormat('d/m/Y'),
                         DatePicker::make('end_date')
-                            ->format('d/m/Y'),
+                            ->displayFormat('d/m/Y'),
                         Textarea::make('description')
                             ->required()
                             ->columnSpanFull(),
