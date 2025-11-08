@@ -181,7 +181,7 @@
                                         <h4 class="timeline__title">{{ $item->company_name }}</h3>
                                             <h5 class="timeline__meta">{{ $item->occupation }}</h5>
                                             <p class="timeline__timeframe">
-                                                {{ $item->start_date->format('d/m/Y') . ' - ' . $item->end_date->format('d/m/Y') }}
+                                                {{ $item->start_date->format('M j, Y') . ' - ' . $item->end_date->format('M j, Y') }}
                                             </p>
                                     </div>
                                     <div class="container_desc timeline__desc">
