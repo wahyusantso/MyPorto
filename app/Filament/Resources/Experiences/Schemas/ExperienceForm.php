@@ -31,6 +31,7 @@ class ExperienceForm
                     ])
                     ->columns(2),
                 Repeater::make('experiences')
+                    ->label('Tech Experiences')
                     ->relationship('experiences')
                     ->schema([
                         TextInput::make('title')
